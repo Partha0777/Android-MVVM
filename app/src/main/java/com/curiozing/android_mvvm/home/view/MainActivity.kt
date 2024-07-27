@@ -37,17 +37,18 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun AppContent(){
+fun AppContent() {
 
     val homeViewModel: HomeViewModel = viewModel()
     Column(modifier = Modifier.fillMaxSize()) {
-       val city = homeViewModel.imageData.observeAsState()
+        val city = homeViewModel.imageData.observeAsState()
 
         Image(
             painter = rememberAsyncImagePainter(model = city.value?.image),
             contentScale = ContentScale.FillWidth,
             contentDescription = "",
-            modifier = Modifier.fillMaxWidth())
+            modifier = Modifier.fillMaxWidth()
+        )
         city.value?.name?.let { Text(text = it) }
 
 
@@ -66,6 +67,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     AndroidMVVMTheme {
-       AppContent()
+        AppContent()
     }
 }
