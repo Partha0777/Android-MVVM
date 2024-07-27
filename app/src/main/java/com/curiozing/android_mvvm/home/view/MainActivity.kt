@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -47,14 +49,14 @@ class MainActivity : ComponentActivity() {
 fun AppContent() {
 
     val homeViewModel: HomeViewModel = viewModel()
-    Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(modifier = Modifier.fillMaxWidth().height(200.dp).defaultMinSize(minHeight = 200.dp), horizontalAlignment = Alignment.CenterHorizontally) {
         val city = homeViewModel.imageData.observeAsState()
 
         Image(
             painter = rememberAsyncImagePainter(model = city.value?.image),
-            contentScale = ContentScale.FillWidth,
+            contentScale = ContentScale.Crop,
             contentDescription = "",
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().height(300.dp)
         )
         Spacer(modifier = Modifier.height(20.dp))
         city.value?.name?.let { Text(text = it, style = TextStyle(fontWeight = FontWeight(600), fontSize = 18.sp)) }
