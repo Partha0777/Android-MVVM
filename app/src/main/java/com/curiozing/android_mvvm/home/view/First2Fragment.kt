@@ -39,7 +39,7 @@ class First2Fragment : Fragment() {
             findNavController().navigate(R.id.action_First2Fragment_to_Second2Fragment)
         }
 
-        homeViewModel.count.observe(viewLifecycleOwner){
+        homeViewModel.count.observe(viewLifecycleOwner) {
             binding.textviewFirst.text = it.toString()
         }
 

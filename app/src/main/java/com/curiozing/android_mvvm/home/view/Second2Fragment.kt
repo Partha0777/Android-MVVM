@@ -17,7 +17,7 @@ import com.curiozing.android_mvvm.home.model.HomeViewModel
 class Second2Fragment : Fragment() {
 
     private var _binding: FragmentSecond2Binding? = null
-    private lateinit var homeViewModel:HomeViewModel
+    private lateinit var homeViewModel: HomeViewModel
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -37,7 +37,7 @@ class Second2Fragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeViewModel = ViewModelProvider(requireActivity())[HomeViewModel::class.java]
 
-        homeViewModel.count.observe(viewLifecycleOwner){
+        homeViewModel.count.observe(viewLifecycleOwner) {
             binding.textviewSecond.text = it.toString()
         }
 
